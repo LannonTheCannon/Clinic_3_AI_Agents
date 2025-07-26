@@ -7,7 +7,7 @@
 
 # LIBRARIES
 
-from langchain_chroma import Chroma
+from langchain_chroma import Chroma  # Instead of langchain_community.vectorstores
 
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
@@ -29,7 +29,7 @@ from marketing_analytics_team.agents.utils import get_last_human_message
 
 
 # KEY INPUTS 
-PATH_PRODUCTS_VECTORDB = "data/data-rag-product-information/products_clean.db"
+PATH_PRODUCTS_VECTORDB = "data/data-rag-product-information/services_clean_2.db"
 
 
 # * AGENT CREATION
