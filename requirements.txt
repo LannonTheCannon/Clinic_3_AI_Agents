@@ -16,3 +16,4 @@ tiktoken
 pydantic
 pydantic-settings
 pydantic-core
+pysqlite3-binary
