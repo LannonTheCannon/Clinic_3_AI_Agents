@@ -19,6 +19,9 @@ __import__('pysqlite3')
 import sys
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
+import sqlite3
+print(sqlite3.sqlite_version)
+
 # Page config
 st.set_page_config(
     page_title="Sweet James Legal Assistant",
