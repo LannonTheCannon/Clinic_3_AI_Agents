@@ -15,8 +15,9 @@ import pandas as pd
 import joblib
 import re
 
-import os
-os.environ["FORCE_SQLITE3"] = "1"
+__import__('pysqlite3')
+import sys
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
 # Page config
 st.set_page_config(
