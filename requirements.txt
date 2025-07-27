@@ -10,10 +10,4 @@ langchain-community
 chromadb
 openai
 langgraph
-sqlite3
-pysqlite3
-tiktoken
-pydantic
-pydantic-settings
-pydantic-core
 pysqlite3-binary
