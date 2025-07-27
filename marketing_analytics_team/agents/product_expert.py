@@ -7,24 +7,19 @@
 
 # LIBRARIES
 
-from langchain_chroma import Chroma  # Instead of langchain_community.vectorstores
-
+# from langchain_chroma import Chroma  # Instead of langchain_community.vectorstores
+from langchain_community.vectorstores import Chroma
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.messages import BaseMessage, AIMessage
-
 from langchain.prompts import PromptTemplate
-
 from langchain.chains import create_retrieval_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain.chains import create_history_aware_retriever
-
 from langgraph.graph import StateGraph, START, END
-
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 
 from typing import Sequence, TypedDict
-
 from marketing_analytics_team.agents.utils import get_last_human_message
 
 
@@ -37,12 +32,12 @@ def make_product_expert_agent(
     model, model_embedding='text-embedding-ada-002', db_path=PATH_PRODUCTS_VECTORDB
 ):
     """
-    Create a Product Expert Agent that can answer questions about products.
+    Create a Service Expert Agent that can answer questions about services.
     
     Parameters:
     ---------
         - model: The language model to use for the agent.
-        - db_path: Path to the vector database containing product information.
+        - db_path: Path to the vector database containing service information.
     
     Returns:
     -------
@@ -70,14 +65,11 @@ def make_product_expert_agent(
         
         prompt = PromptTemplate(
             template="""
-            You are a question preparer for a Product Expert. Your goal is to extract the relevant part of the question so the Product Expert knows which product or products to provide information on. 
-            
+            You are a question preparer for a Service Expert. Your goal is to extract the relevant part of the question so the Service Expert knows which service or services to provide information on. 
             Remove anything about writing marketing emails or emails in general. 
-            
-            Remove anything related to business analytics that requires knowledge of a customers, transactions, or subscribers. Leave only information related to collecting information on the product or products in question. 
-            
-            Only return the product or products to collect information on, and what information to collect on those products. 
-            
+            Remove anything related to business analytics that requires knowledge of a customers, transactions, or subscribers. Leave only information related to collecting information on the service or services in question. 
+            Only return the service or services to collect information on, and what information to collect on those services. 
+
             User Input: {user_question}
             """,
             input_variables=['user_question']
