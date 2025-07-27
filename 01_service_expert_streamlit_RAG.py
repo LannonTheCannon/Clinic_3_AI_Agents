@@ -15,6 +15,9 @@ import pandas as pd
 import joblib
 import re
 
+import os
+os.environ["FORCE_SQLITE3"] = "1"
+
 # Page config
 st.set_page_config(
     page_title="Sweet James Legal Assistant",
